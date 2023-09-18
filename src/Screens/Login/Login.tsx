@@ -1,4 +1,3 @@
-import { useFonts, OpenSans_600SemiBold } from "@expo-google-fonts/open-sans";
 import {
   Image,
   StyleSheet,
@@ -8,12 +7,7 @@ import {
 } from "react-native";
 
 export default function Login() {
-  const [loadedFont] = useFonts({
-    OpenSans_600SemiBold,
-  });
-  if (!loadedFont) {
-    return null;
-  }
+
   return (
     <View style={Styles.container}>
       <Image
@@ -48,12 +42,12 @@ const Styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: "#2E3E4B",
-    fontFamily: "OpenSans-Bold",
+    fontFamily: "OpenSans_700Bold",
   },
   subtitle: {
     fontSize: 16,
     color: "#2E3E4B",
-    fontFamily: "OpenSans-Medium",
+    fontFamily: "OpenSans_500Medium",
     marginBottom: "10%",
   },
   buttonIcon: {
@@ -98,7 +92,7 @@ const Styles = StyleSheet.create({
   buttonOutlinedText: {
     color: "#2E3E4B",
     fontSize: 18,
-    fontFamily: "OpenSans-SemiBold",
+    fontFamily: "OpenSans_600SemiBold",
     textAlign: "center",
   },
 });
