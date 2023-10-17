@@ -28,9 +28,11 @@ export function Button({
   return !outlined ? (
     <TouchableHighlight style={[Styles.buttonIcon, { width }]} {...rest}>
       <View style={[Styles.button, { backgroundColor }]}>
-        <View style={Styles.icon}>
-          <Image source={source!} />
-        </View>
+        {source && (
+          <View style={Styles.icon}>
+            <Image source={source!} />
+          </View>
+        )}
         <Text style={Styles.buttonText}>{text}</Text>
       </View>
     </TouchableHighlight>
@@ -55,10 +57,11 @@ const Styles = StyleSheet.create({
     paddingLeft: 10,
     textAlign: 'center',
     borderRadius: 8,
+    justifyContent: 'center',
   },
   buttonText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: 'OpenSans_600SemiBold',
     textAlign: 'center',
     width: '100%',
@@ -79,7 +82,7 @@ const Styles = StyleSheet.create({
   },
   buttonOutlinedText: {
     color: '#2E3E4B',
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: 'OpenSans_600SemiBold',
     textAlign: 'center',
   },
