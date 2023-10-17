@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import Checkbox from 'expo-checkbox';
-import { Button } from '../../components/Button';
+import { Button } from '../../Components/Button';
 import BackArrow from '../../utils/images/backArrow.svg';
 import FacebookLogo from '../../utils/images/fbc-logo.svg';
 import GoogleLogo from '../../utils/images/google-logo.svg';
@@ -19,9 +19,11 @@ import {
   Subtitle,
   Title,
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 export function SignIn() {
   const [isChecked, setIsChecked] = useState(false);
+  const { navigate } = useNavigation();
 
   function handleRemeberPassword() {
     setIsChecked((prevState) => !prevState);
@@ -30,7 +32,12 @@ export function SignIn() {
   return (
     <Container>
       <TouchableOpacity>
-        <BackArrow width={12} height={24} />
+        <BackArrow
+          width={12}
+          height={24}
+          onPress={() => navigate('Tutorial' as never)}
+          style={{ marginTop: 8 }}
+        />
       </TouchableOpacity>
 
       <Title>Acesse</Title>

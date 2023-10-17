@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { Button } from '../../components/Button';
+import { Button } from '../../Components/Button';
 
 export const Container = styled.View`
   flex: 1;
