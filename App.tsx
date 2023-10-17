@@ -7,6 +7,7 @@ import {
   OpenSans_700Bold,
   OpenSans_500Medium,
   OpenSans_400Regular,
+  OpenSans_800ExtraBold,
 } from '@expo-google-fonts/open-sans';
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
     OpenSans_700Bold,
     OpenSans_500Medium,
     OpenSans_400Regular,
+    OpenSans_800ExtraBold,
   });
   if (!loadedFont) {
     return null;

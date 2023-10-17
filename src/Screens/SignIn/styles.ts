@@ -10,14 +10,14 @@ export const Title = styled.Text`
   font-size: 30px;
   font-family: OpenSans_700Bold;
   color: #2e3e4b;
-  margin-top: 82px;
+  margin-top: 48px;
 `;
 
 export const Subtitle = styled.Text`
   font-size: 16px;
   font-family: OpenSans_500Medium;
   color: #2e3e4b;
-  margin-bottom: 72px;
+  margin-bottom: 46px;
 `;
 
 export const InputContainer = styled.View`
@@ -36,7 +36,7 @@ export const InputText = styled.TextInput`
 
 export const Label = styled.Text`
   color: #2e3e4b;
-  font-size: 12px;
+  font-size: 14px;
   font-family: OpenSans_400Regular;
   margin-bottom: 4px;
 `;
