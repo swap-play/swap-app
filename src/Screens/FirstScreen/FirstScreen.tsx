@@ -1,29 +1,29 @@
-import { StatusBar } from 'react-native';
 import LoginImg from '../../utils/images/loginImg.svg';
+import GoogleLogo from '../../utils/images/google-logo.svg';
 import { useNavigation } from '@react-navigation/native';
-import { Container, GoogleSignInButton, Subtitle, Title } from './styles';
+import { Container, Subtitle, Title } from './styles';
 import { Button } from '../../Components/Button';
 
-export function Login() {
+export function FirstScreen() {
   const navigation = useNavigation();
 
   return (
     <>
-      <StatusBar backgroundColor="#48484850" barStyle="dark-content" />
       <Container>
         <LoginImg width={364} height={234} style={{ marginBottom: 80 }} />
         <Title>Ótimo dia!</Title>
         <Subtitle>Como deseja acessar?</Subtitle>
-        <GoogleSignInButton
-          text="Entrar com Google"
-          source={require('../../utils/google-icon.png')}
-          backgroundColor="#8b5fd9"
-        />
+
         <Button
-          width={'95%'}
-          text="Outras formas"
+          imageSvg={<GoogleLogo width={28} height={28} />}
+          label="Entrar com Google"
+        />
+
+        <Button
+          label="Outras formas"
           outlined
           onPress={() => navigation.navigate('SignIn' as never)}
+          style={{ marginTop: 16 }}
         />
       </Container>
     </>

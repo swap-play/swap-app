@@ -1,25 +1,21 @@
 import { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Checkbox from 'expo-checkbox';
 import { Button } from '../../Components/Button';
 import BackArrow from '../../utils/images/backArrow.svg';
-import FacebookLogo from '../../utils/images/fbc-logo.svg';
-import GoogleLogo from '../../utils/images/google-logo.svg';
+
 import {
   CheckboxContainer,
   Container,
-  InputContainer,
-  InputText,
-  Label,
   OptionSignContainer,
-  OtherOptionsContainer,
   PasswordOptionContainer,
   PasswordOptionLabel,
-  SocialsContainer,
   Subtitle,
   Title,
 } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { Input } from '../../Components/Input/Index';
+import { OtherOptionsSingin } from '../../Components/OtherOptionsSignin';
 
 export function SignIn() {
   const [isChecked, setIsChecked] = useState(false);
@@ -31,33 +27,28 @@ export function SignIn() {
 
   return (
     <Container>
-      <TouchableOpacity>
-        <BackArrow
-          width={12}
-          height={24}
-          onPress={() => navigate('Tutorial' as never)}
-          style={{ marginTop: 8 }}
-        />
+      <TouchableOpacity
+        style={{
+          width: 30,
+          height: 30,
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: 15,
+          marginTop: 12,
+        }}
+        onPress={() => navigate('FirstScreen' as never)}
+      >
+        <BackArrow width={12} height={24} />
       </TouchableOpacity>
 
       <Title>Acesse</Title>
-      <Subtitle>Com E-mail e senha para entrar</Subtitle>
+      <Subtitle>Com e-mail e senha para entrar</Subtitle>
 
-      <InputContainer style={{ marginBottom: 16 }}>
-        <Label>E-mail</Label>
-        <InputText
-          placeholder="Digite seu e-mail"
-          placeholderTextColor="#D9D9D9"
-        />
-      </InputContainer>
+      <View style={{ gap: 16 }}>
+        <Input label="E-mail" placeholder="Digite seu e-mail" />
 
-      <InputContainer>
-        <Label>Senha</Label>
-        <InputText
-          placeholder="Digite sua senha"
-          placeholderTextColor="#D9D9D9"
-        />
-      </InputContainer>
+        <Input label="Senha" placeholder="Digite sua senha" />
+      </View>
 
       <PasswordOptionContainer>
         <CheckboxContainer>
@@ -76,53 +67,16 @@ export function SignIn() {
       </PasswordOptionContainer>
 
       <OptionSignContainer>
-        <Button backgroundColor="#8B5FD9" text="Acessar" width="48%" />
+        <Button label="Acessar" />
 
-        <Button outlined backgroundColor="#fff" text="Cadastrar" width="48%" />
+        <Button
+          outlined
+          label="Cadastrar"
+          onPress={() => navigate('Register' as never)}
+        />
       </OptionSignContainer>
 
-      <OtherOptionsContainer>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 10,
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: '#D7D7D7',
-              width: 48,
-              height: 2,
-              marginTop: 5,
-            }}
-          />
-          <Text>Ou continue com</Text>
-          <View
-            style={{
-              backgroundColor: '#D7D7D7',
-              width: 48,
-              height: 2,
-              marginTop: 5,
-            }}
-          />
-        </View>
-
-        <SocialsContainer>
-          <View
-            style={{ backgroundColor: '#E0E2E4', padding: 6, borderRadius: 5 }}
-          >
-            <GoogleLogo width={28} height={28} />
-          </View>
-
-          <View
-            style={{ backgroundColor: '#E0E2E4', padding: 6, borderRadius: 5 }}
-          >
-            <FacebookLogo width={28} height={28} />
-          </View>
-        </SocialsContainer>
-      </OtherOptionsContainer>
+      <OtherOptionsSingin />
     </Container>
   );
 }

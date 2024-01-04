@@ -1,8 +1,7 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, ScrollView } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { SignInStyles } from '../style';
-import { useNavigation } from '@react-navigation/native';
 
 import BackArrow from '../../../utils/images/backArrowWhite.svg';
 import Image from '../../../utils/images/thirdImageTutorial.svg';
@@ -14,10 +13,8 @@ type StepProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 export function ThirdStepTutorial({ setStep }: StepProps) {
-  const { navigate } = useNavigation();
-
   return (
-    <View style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <TouchableOpacity>
         <BackArrow
           width={12}
@@ -45,6 +42,6 @@ export function ThirdStepTutorial({ setStep }: StepProps) {
         </TouchableOpacity>
         <Text style={styles.text}>Pular</Text>
       </Animatable.View>
-    </View>
+    </ScrollView>
   );
 }
