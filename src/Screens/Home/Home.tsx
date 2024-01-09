@@ -23,6 +23,8 @@ import ShareIcon from '../../utils/icons/shareIcon.svg';
 import SaveIcon from '../../utils/icons/saveIcon.svg';
 import ClockIcon from '../../utils/icons/clockIcon.svg';
 import { OptionIcon } from './Components/OptionIcon';
+import { Button } from '../../Components/Button';
+import { useAuth } from '../../hooks/useAuth';
 
 const games = [
   { id: 1, imageUrl: require('../../utils/images/games/god_of_war.jpg') },
@@ -55,6 +57,8 @@ const gamesCard = [
 ];
 
 export function Home() {
+  const { signout } = useAuth();
+
   return (
     <Container showsVerticalScrollIndicator={false}>
       <Header>
@@ -73,6 +77,8 @@ export function Home() {
           />
         </HeaderOptions>
       </Header>
+
+      <Button label="Sair" onPress={signout} />
 
       <Text
         size={16}

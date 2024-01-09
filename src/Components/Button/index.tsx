@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { TouchableOpacityProps, View } from 'react-native';
+import { ActivityIndicator, TouchableOpacityProps, View } from 'react-native';
 import * as S from './styles';
 import { Text } from '../Text';
 
@@ -8,6 +8,7 @@ interface ButtonProps extends TouchableOpacityProps {
   imageSvg?: ReactNode;
   transparent?: boolean;
   outlined?: boolean;
+  loading?: boolean;
 }
 
 export function Button({
@@ -16,6 +17,7 @@ export function Button({
   outlined,
   style,
   transparent,
+  loading,
   ...rest
 }: ButtonProps) {
   const outlinedStyles = { borderColor: '#D7D7D7', borderWidth: 1 };
@@ -40,9 +42,13 @@ export function Button({
       {imageSvg && !transparent && (
         <S.ImageContainer>{imageSvg}</S.ImageContainer>
       )}
-      <Text weight="600SemiBold" color={outlined ? '#2E3E4B' : '#fff'}>
-        {label}
-      </Text>
+      {loading ? (
+        <ActivityIndicator size="large" color={outlined ? '#8b5fd9' : '#fff'} />
+      ) : (
+        <Text weight="600SemiBold" color={outlined ? '#2E3E4B' : '#fff'}>
+          {label}
+        </Text>
+      )}
     </S.Container>
   );
 }

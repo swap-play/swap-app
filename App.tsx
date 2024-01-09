@@ -10,6 +10,7 @@ import {
   OpenSans_800ExtraBold,
 } from '@expo-google-fonts/open-sans';
 import { StatusBar } from 'react-native';
+import { AuthProvider } from './src/contexts/AuthContext';
 
 export default function App() {
   const [loadedFont] = useFonts({
@@ -26,7 +27,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="#48484850" barStyle="dark-content" />
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   );
 }
