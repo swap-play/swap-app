@@ -1,19 +1,42 @@
-import { ScrollView, TouchableOpacity, View } from 'react-native';
-import { Text } from '../../../Components/Text';
-import { Input } from '../../../Components/Input/Index';
-import { BackArrowButton } from '../../../Components/BackArrowButton';
-import { useNavigate } from '../../../hooks/useNavigate';
-import { Button } from '../../../Components/Button';
+import { ScrollView, ToastAndroid, TouchableOpacity, View } from 'react-native';
+import { Text } from '../../../../Components/Text';
+import { Input } from '../../../../Components/Input/Index';
+import { BackArrowButton } from '../../../../Components/BackArrowButton';
+import { useNavigate } from '../../../../hooks/useNavigate';
+import { Button } from '../../../../Components/Button';
 
-import { SelectionButton } from '../../../Components/SelectionButton';
+import { SelectionButton } from '../../../../Components/SelectionButton';
 import * as Animatable from 'react-native-animatable';
+import { usePersonalDataForm } from '../../../../hooks/usePersonalDataForm';
+import { useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type StepProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export function SixthStep({ setStep }: StepProps) {
+export function LastStep({ setStep }: StepProps) {
   const navigation = useNavigate();
+  const { errors, isSubmitSuccessed } = usePersonalDataForm();
+
+  function isEmptyObj(obj: object) {
+    return Object.keys(obj).length === 0 && obj.constructor === Object;
+  }
+
+  async function handleNextScreen() {
+    if (!isEmptyObj(errors)) {
+      ToastAndroid.show(
+        'Complete os campos obrigatórios nas telas anteriores.',
+        3000,
+      );
+    }
+
+    if (isSubmitSuccessed) {
+      await AsyncStorage.setItem('@tutorialDone', 'true');
+
+      navigation('Home');
+    }
+  }
 
   return (
     <ScrollView
@@ -70,7 +93,7 @@ export function SixthStep({ setStep }: StepProps) {
           <Button
             label="Próximo"
             style={{ marginTop: 300 }}
-            // onPress={() => setStep((prevState) => prevState + 1)}
+            onPress={handleNextScreen}
           />
         </View>
       </Animatable.View>

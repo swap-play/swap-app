@@ -1,10 +1,12 @@
 import { View } from 'react-native';
-import { Text } from '../../../Components/Text';
-import { Input } from '../../../Components/Input/Index';
-import { BackArrowButton } from '../../../Components/BackArrowButton';
-import { useNavigate } from '../../../hooks/useNavigate';
-import { Button } from '../../../Components/Button';
+import { Text } from '../../../../Components/Text';
+import { Input } from '../../../../Components/Input/Index';
+import { BackArrowButton } from '../../../../Components/BackArrowButton';
+import { useNavigate } from '../../../../hooks/useNavigate';
+import { Button } from '../../../../Components/Button';
 import * as Animatable from 'react-native-animatable';
+import { useAuth } from '../../../../hooks/useAuth';
+import { usePersonalDataForm } from '../../../../hooks/usePersonalDataForm';
 
 type StepProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -12,6 +14,13 @@ type StepProps = {
 
 export function FirstStep({ setStep }: StepProps) {
   const navigation = useNavigate();
+
+  const { control, errors } = usePersonalDataForm();
+  const { signout } = useAuth();
+
+  function handleNextPage() {
+    setStep((prevState) => prevState + 1);
+  }
 
   return (
     <View
@@ -44,12 +53,16 @@ export function FirstStep({ setStep }: StepProps) {
             alignItems: 'center',
           }}
         >
-          <Input label="Nome" placeholder="Digite seu nome" />
-
-          <Button
-            label="Próximo"
-            onPress={() => setStep((prevState) => prevState + 1)}
+          <Input
+            name="name"
+            control={control}
+            label="Nome"
+            placeholder="Digite seu nome"
+            error={errors?.name?.message}
           />
+
+          <Button label="Próximo" onPress={handleNextPage} />
+          <Button label="Sar" onPress={signout} />
         </View>
       </Animatable.View>
     </View>
