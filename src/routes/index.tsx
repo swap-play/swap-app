@@ -4,13 +4,13 @@ import { SignIn } from '../Screens/SignIn/SignIn';
 import { Tutorial } from '../Screens/Tutorial/Tutorial';
 import { Register } from '../Screens/Register/Register';
 import { PersonalData } from '../Screens/PersonalData/PersonalData';
-import { Home } from '../Screens/Home/Home';
 import { useAuth } from '../hooks/useAuth';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { TabRoutes } from './tab.routes';
 
 export type StackParamList = {
-  Home: undefined;
+  TabRoutes: undefined;
   PersonalData: undefined;
   FirstScreen: undefined;
   SignIn: undefined;
@@ -27,7 +27,6 @@ export function Routes() {
     async function handleTutorialAlreadyDone() {
       try {
         const isDone = await AsyncStorage.getItem('@tutorialDone');
-
         if (isDone) {
           setIsTutorialDone(true);
         }
@@ -61,8 +60,8 @@ export function Routes() {
           )}
 
           <Stack.Screen
-            name="Home"
-            component={Home}
+            name="TabRoutes"
+            component={TabRoutes}
             options={{ headerShown: false }}
           />
         </>

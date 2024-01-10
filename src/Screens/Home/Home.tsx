@@ -223,7 +223,7 @@ export function Home() {
                 style={{ borderRadius: 10 }}
                 resizeMode="cover"
                 source={{
-                  uri: 'https://s3-alpha-sig.figma.com/img/4b30/ada1/b26693fb4fe9c276d8b358a69a2ff46e?Expires=1704672000&Signature=XseKRmMwSlbWixoPVhDFfNGAKPeQ1g-AGnZFvFk3fGAvXT617Up~IzdG6zXBZuN5MhJudS883fkXw6R63J5VPgicckn6~srZ~1DGrT4wmj8JjpvFXf1QxSes2cM48Cqy0VJwmvGKNtBuJud-~sWe1Bz5cIFTPhMZhKPUDbSEnw4DLUgrbbTMuu~EVVjTMQQDKmmSxNcAsiVQ2x~IF2he8L6gZ~fK6SOr2hgwS7mc2CfojhL0rGSCBIqUKNWW95zvkumYWpwfinGzXdqtGNoI-JWXLMPwyZWnORcgb9cK71scuCHVbp8GCL2~T93mt3KyElUwF37Dod9TEH3V9Kd7kQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+                  uri: 'https://s3-alpha-sig.figma.com/img/4b30/ada1/b26693fb4fe9c276d8b358a69a2ff46e?Expires=1705881600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gbWyJzrxwLQTma8v9fIl4CUM~qL6Xbi2UKTnx3KNKtEX-rCYIc9c8QFIFvTlSPT0xFEctOTxtVt8fSARU7kYGBnKqSP5FvSjiZrfRNMb9vPfH3V3CQQCuxP9HjyG1cxM84JWAb~dOnP0BK7eb1Ozno6GEZDeuqKqIk0iG5Co3sxBuYQhIjHvIkN8oeCZgmyM4cGSzeT~FtuUyjo29glEvA6df24oFY1ePMLclh3jrGNhi5VgB9myOPjE0UH3Geo9ClvJfXdCS-4U7PPbrSmwwRchmIpDRPolCAQ7Ia2Qq3SlZM800dp3JtcuBcSZ1ZcaI2wroDJ8KITRj2eCrW4Miw__',
                 }}
               />
             </View>

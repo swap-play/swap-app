@@ -8,6 +8,8 @@ import Image from '../../../utils/images/lastImageTutorial.svg';
 import RigthArrow from '../../../utils/images/rightArrow.svg';
 import Breadcrumbs from '../../../Components/BreadCrumbs';
 import { useNavigate } from '../../../hooks/useNavigate';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from '../../../hooks/useAuth';
 
 const styles = SignInStyles;
 
@@ -16,6 +18,16 @@ type StepProps = {
 };
 export function LastStepTutorial({ setStep }: StepProps) {
   const navigation = useNavigate();
+  const { user } = useAuth();
+
+  async function handleNextScreen() {
+    if (user?.name) {
+      await AsyncStorage.setItem('@tutorialDone', 'true');
+      navigation('TabRoutes');
+      return;
+    }
+    navigation('PersonalData');
+  }
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
@@ -39,10 +51,7 @@ export function LastStepTutorial({ setStep }: StepProps) {
           sugeridas. Nesta tela, você encontrará uma seleção de jogos que outros
           usuários estão dispostos a oferecer em troca do seu jogo anunciado.
         </Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation('PersonalData')}
-        >
+        <TouchableOpacity style={styles.button} onPress={handleNextScreen}>
           <RigthArrow />
         </TouchableOpacity>
         <Text style={styles.text}>Pular</Text>

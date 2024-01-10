@@ -34,7 +34,7 @@ export function LastStep({ setStep }: StepProps) {
     if (isSubmitSuccessed) {
       await AsyncStorage.setItem('@tutorialDone', 'true');
 
-      navigation('Home');
+      navigation('TabRoutes');
     }
   }
 
