@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { SignInStyles } from '../style';
 import { useNavigation } from '@react-navigation/native';
@@ -18,7 +18,7 @@ export function FirstStepTutorial({ setStep }: StepProps) {
   const { navigate } = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <TouchableOpacity>
         <BackArrow
           width={12}
@@ -48,6 +48,6 @@ export function FirstStepTutorial({ setStep }: StepProps) {
         </TouchableOpacity>
         <Text style={styles.text}>Pular</Text>
       </Animatable.View>
-    </View>
+    </ScrollView>
   );
 }

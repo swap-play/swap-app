@@ -1,13 +1,15 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, ScrollView } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { SignInStyles } from '../style';
-import { useNavigation } from '@react-navigation/native';
 
 import BackArrow from '../../../utils/images/backArrowWhite.svg';
 import Image from '../../../utils/images/lastImageTutorial.svg';
 import RigthArrow from '../../../utils/images/rightArrow.svg';
 import Breadcrumbs from '../../../Components/BreadCrumbs';
+import { useNavigate } from '../../../hooks/useNavigate';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from '../../../hooks/useAuth';
 
 const styles = SignInStyles;
 
@@ -15,10 +17,20 @@ type StepProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 export function LastStepTutorial({ setStep }: StepProps) {
-  const { navigate } = useNavigation();
+  const navigation = useNavigate();
+  const { user } = useAuth();
+
+  async function handleNextScreen() {
+    if (user?.name) {
+      await AsyncStorage.setItem('@tutorialDone', 'true');
+      navigation('TabRoutes');
+      return;
+    }
+    navigation('PersonalData');
+  }
 
   return (
-    <View style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <TouchableOpacity>
         <BackArrow
           width={12}
@@ -39,14 +51,11 @@ export function LastStepTutorial({ setStep }: StepProps) {
           sugeridas. Nesta tela, você encontrará uma seleção de jogos que outros
           usuários estão dispostos a oferecer em troca do seu jogo anunciado.
         </Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => setStep((step) => step + 1)}
-        >
+        <TouchableOpacity style={styles.button} onPress={handleNextScreen}>
           <RigthArrow />
         </TouchableOpacity>
         <Text style={styles.text}>Pular</Text>
       </Animatable.View>
-    </View>
+    </ScrollView>
   );
 }

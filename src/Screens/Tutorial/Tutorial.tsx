@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import { SignInStyles } from './style';
-import { StackTypes } from '../../routes';
-import { useNavigation } from '@react-navigation/native';
-
-import BackArrow from '../../utils/images/backArrow.svg';
-import Image from '../../utils/images/firtsImageTutorial.svg';
-import RigthArrow from '../../utils/images/rightArrow.svg';
+import React, { useState, useEffect } from 'react';
 import { FirstStepTutorial } from './Steps/FirtsStep';
 import { SecondStepTutorial } from './Steps/SecondStep';
 import { ThirdStepTutorial } from './Steps/ThirdStep';
 import { LastStepTutorial } from './Steps/LastStep';
-import Breadcrumbs from '../../Components/BreadCrumbs';
-const styles = SignInStyles;
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StackParamList } from '../../routes';
 
-export function Tutorial() {
-  const [step, setStep] = useState(1);
+type TutorialProps = NativeStackScreenProps<StackParamList, 'Tutorial'>;
+
+export function Tutorial({ route }: TutorialProps) {
+  const { params } = route;
+
+  const [step, setStep] = useState(params?.stepNumber || 1);
+
   return (
     <>
       {step === 1 && <FirstStepTutorial setStep={setStep} />}

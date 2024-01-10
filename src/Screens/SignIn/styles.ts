@@ -2,8 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  padding: 0 14px;
   background: #fff;
+  padding: 0 16px;
 `;
 
 export const Title = styled.Text`
@@ -18,27 +18,6 @@ export const Subtitle = styled.Text`
   font-family: OpenSans_500Medium;
   color: #2e3e4b;
   margin-bottom: 46px;
-`;
-
-export const InputContainer = styled.View`
-  width: 100%;
-  max-width: 400px;
-`;
-
-export const InputText = styled.TextInput`
-  width: 100%;
-  border-radius: 5px;
-  background: #f2f5fd;
-  height: 70px;
-  font-family: OpenSans_600SemiBold;
-  padding-left: 12px;
-`;
-
-export const Label = styled.Text`
-  color: #2e3e4b;
-  font-size: 14px;
-  font-family: OpenSans_400Regular;
-  margin-bottom: 4px;
 `;
 
 export const PasswordOptionContainer = styled.View`
@@ -61,19 +40,8 @@ export const PasswordOptionLabel = styled.Text`
 `;
 
 export const OptionSignContainer = styled.View`
+  width: 47%;
   margin-top: 28px;
   flex-direction: row;
-  gap: 16px;
-`;
-
-export const OtherOptionsContainer = styled.View`
-  margin-top: 48px;
-`;
-
-export const SocialsContainer = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 26px;
-  margin-top: 22px;
+  gap: 20px;
 `;
